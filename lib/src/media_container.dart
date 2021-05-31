@@ -22,11 +22,13 @@ class MediaContainer extends StatefulWidget {
     this.videoPlayerInitialVolume = 0.0,
     this.videoHighQuality = true,
     this.onTapImage,
+    this.keepAlive = true,
   }) : super(key: key);
 
   final TweetVM tweetVM;
   final ViewMode viewMode;
   final bool? useVideoPlayer;
+  final bool keepAlive;
   final bool? videoHighQuality;
   final double? videoPlayerInitialVolume;
 
@@ -55,6 +57,7 @@ class _MediaContainerState extends State<MediaContainer>
           widget.tweetVM.getDisplayTweet(),
           initialVolume: widget.videoPlayerInitialVolume,
           videoHighQuality: widget.videoHighQuality,
+          keepAlive: widget.keepAlive,
         );
       } else {
         child = Stack(
@@ -257,5 +260,5 @@ class _MediaContainerState extends State<MediaContainer>
   }
 
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => widget.keepAlive;
 }

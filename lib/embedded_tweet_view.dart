@@ -41,6 +41,9 @@ class EmbeddedTweetView extends StatelessWidget {
   /// If set to false betterplayer/video_player will load the lowest quality available.
   final bool videoHighQuality;
 
+  /// If set to false the tweet and it's components won't be kept alive when it's not in de widget tree anymore
+  final bool keepAlive;
+
   EmbeddedTweetView(
     this._tweetVM, {
     this.backgroundColor,
@@ -50,6 +53,7 @@ class EmbeddedTweetView extends StatelessWidget {
     this.onTapImage,
     this.createdDateDisplayFormat,
     required this.videoHighQuality,
+    required this.keepAlive,
   }); //  TweetView(this.tweetVM);
 
   EmbeddedTweetView.fromTweet(
@@ -61,6 +65,7 @@ class EmbeddedTweetView extends StatelessWidget {
     this.onTapImage,
     this.createdDateDisplayFormat,
     this.videoHighQuality = true,
+    this.keepAlive = true,
   }) : _tweetVM = TweetVM.fromApiModel(tweet, createdDateDisplayFormat);
 
   @override
@@ -185,6 +190,7 @@ class EmbeddedTweetView extends StatelessWidget {
               videoPlayerInitialVolume: videoPlayerInitialVolume,
               onTapImage: onTapImage,
               videoHighQuality: videoHighQuality,
+              keepAlive: keepAlive,
             ),
           ),
           Container(
