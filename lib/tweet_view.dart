@@ -71,6 +71,9 @@ class TweetView extends StatelessWidget {
   /// If set to false better_player will load the lowest quality available.
   final bool? videoHighQuality;
 
+  /// If set to false the tweet and it's components won't be kept alive when it's not in de widget tree anymore
+  final bool keepAlive;
+
   TweetView(
     this._tweetVM, {
     this.userNameStyle,
@@ -90,6 +93,7 @@ class TweetView extends StatelessWidget {
     this.onTapImage,
     this.createdDateDisplayFormat,
     this.videoHighQuality,
+    required this.keepAlive,
   }); //  TweetView(this.tweetVM);
 
   TweetView.fromTweet(
@@ -111,6 +115,7 @@ class TweetView extends StatelessWidget {
     this.onTapImage,
     this.createdDateDisplayFormat,
     this.videoHighQuality = true,
+    this.keepAlive = true,
   }) : _tweetVM = TweetVM.fromApiModel(tweet, createdDateDisplayFormat);
 
   @override
@@ -126,6 +131,7 @@ class TweetView extends StatelessWidget {
             videoPlayerInitialVolume: videoPlayerInitialVolume,
             onTapImage: onTapImage,
             videoHighQuality: videoHighQuality,
+            keepAlive: keepAlive,
           ),
           GestureDetector(
             onTap: () {

@@ -11,10 +11,12 @@ class TweetVideo extends StatefulWidget {
     this.autoPlay = false,
     this.enableFullscreen = true,
     this.videoHighQuality = true,
+    this.keepAlive = true,
   }) : super(key: key);
 
   final TweetVM tweetVM;
   final double? initialVolume;
+  final bool keepAlive;
   final bool autoPlay;
   final bool enableFullscreen;
   final bool? videoHighQuality;
@@ -101,5 +103,5 @@ class _TweetVideoState extends State<TweetVideo>
   }
 
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => widget.keepAlive;
 }

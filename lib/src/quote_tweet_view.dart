@@ -19,6 +19,7 @@ class QuoteTweetView extends StatelessWidget {
   final Color? borderColor;
   final Color? backgroundColor;
   final OnTapImage? onTapImage;
+  final bool keepAlive;
 
   QuoteTweetView(
     this.tweetVM, {
@@ -29,6 +30,7 @@ class QuoteTweetView extends StatelessWidget {
     this.borderColor,
     this.backgroundColor,
     this.onTapImage,
+    this.keepAlive = true,
   }); //  TweetView(this.tweetVM);
 
   QuoteTweetView.fromTweet(
@@ -40,6 +42,7 @@ class QuoteTweetView extends StatelessWidget {
     this.borderColor,
     this.backgroundColor,
     this.onTapImage,
+    this.keepAlive = true,
   });
 
   @override
@@ -87,6 +90,7 @@ class QuoteTweetView extends StatelessWidget {
                 ViewMode.quote,
                 useVideoPlayer: false,
                 onTapImage: onTapImage,
+                keepAlive: keepAlive,
               ),
             ],
           ),
